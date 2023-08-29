@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./third.component.css']
 })
 export class ThirdComponent {
-  message: string = 123;
+  message: string = 'Hello, Syntax Error!';
 }
 

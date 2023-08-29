@@ -9,6 +9,7 @@ export class FirstComponent implements OnInit {
   data!: string; 
 
   ngOnInit(): void {
-    this.data = 123; // Intentional type error: Assign a number to a string property
+    // this.data = 123; // Intentional type error: Assign a number to a string property
+    this.data = "Ashish";
   }
 }

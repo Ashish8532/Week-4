@@ -18,6 +18,6 @@ calculateAverage() {
     sum += element;
   }
 
-  this.average = sum / 0; // logical error
+  this.average = sum / this.numbers.length; // logical error
 }
 }
