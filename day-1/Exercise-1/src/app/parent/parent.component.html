@@ -1,0 +1,8 @@
+<div *ngFor="let name of names; let i = index">
+    <app-child [name]="name" (remove)="removeName(i)"></app-child>
+  </div>
+  <div>
+    <br><br>
+    Message: {{ message }}
+    <app-sub-child></app-sub-child>
+  </div>

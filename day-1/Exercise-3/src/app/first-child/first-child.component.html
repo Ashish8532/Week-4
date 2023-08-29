@@ -1,0 +1,9 @@
+<div>
+    <p>First Child Data: {{ childData }}</p>
+  </div>
+
+  <div>
+    <p>{{ firstChildData }}</p>
+    <button (click)="changeData()">Change Data</button>
+  </div>
+  <app-second-child [secondChildData]="firstChildData"></app-second-child>
