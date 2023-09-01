@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './Guard/auth.guard';
+import { dataResolver } from './Resolver/data.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
+  { path: 'dashboard', component: DashboardComponent, resolve: { data: dataResolver },  canActivate: [authGuard]},
   { path: '**', redirectTo: ''}
 ];
 

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../Service/auth.service';
 
 @Component({
@@ -7,14 +7,18 @@ import { AuthService } from '../Service/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) {
+  data!: any[];
+
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {
     console.log('dashboard');
   }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+  ngOnInit() {
+    this.data = this.route.snapshot.data['data'];
   }
+
+
+  
 }
