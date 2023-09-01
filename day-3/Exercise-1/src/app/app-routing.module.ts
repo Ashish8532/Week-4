@@ -9,6 +9,14 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent, resolve: { data: dataResolver },  canActivate: [authGuard]},
+  {
+    path: 'module1',
+    loadChildren: () => import('./module1/module1.module').then((m) => m.Module1Module)
+  },
+  {
+    path: 'module2',
+    loadChildren: () => import('./module2/module2.module').then((m) => m.Module2Module)
+  },
   { path: '**', redirectTo: ''}
 ];
 
