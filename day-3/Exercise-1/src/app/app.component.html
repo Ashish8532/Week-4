@@ -1,0 +1,49 @@
+<header>
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" routerLink="">Route Guard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/module1">Module-1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/module2">Module-2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/protected">Protected</a>
+          </li>
+        </ul>
+        <div class="float-right">
+          <div class="me-sm-2">
+            <a class="btn btn-danger me-sm-2" routerLink="/login">Login</a>
+            <a (click)="logout()" class="btn btn-warning">Logout</a>
+          </div>
+        </div>
+        
+        <!-- <ng-container *ngIf="isLoggedIn; else loggedOut">
+         
+        </ng-container>
+        <ng-template #loggedOut>
+         
+        </ng-template> -->
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>
