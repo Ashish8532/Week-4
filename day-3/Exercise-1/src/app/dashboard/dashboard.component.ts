@@ -10,7 +10,7 @@ import { AuthService } from '../Service/auth.service';
 export class DashboardComponent {
 
   constructor(private authService: AuthService, private router: Router) {
-
+    console.log('dashboard');
   }
 
   logout() {

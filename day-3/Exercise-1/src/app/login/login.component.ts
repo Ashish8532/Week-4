@@ -17,6 +17,7 @@ export class LoginComponent {
   login(): void {
     const success = this.authService.login(this.username, this.password);
     if (success) {
+      console.log("Login Action");
       // Navigate to a protected page (if needed) upon successful login
       this.router.navigate(['/dashboard']);
     } else {

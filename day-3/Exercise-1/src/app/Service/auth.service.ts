@@ -11,7 +11,6 @@ export class AuthService {
     // Check if both username and password are non-empty
     if (username === 'ashish' && password === 'ashish@12') {
       // For now, consider any non-empty credentials as valid
-      localStorage.setItem('token', Math.random().toString());
       this.isLoggedIn = true;
       return true;
     }
@@ -19,7 +18,6 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('token');
     this.isLoggedIn = false;
   }
 
