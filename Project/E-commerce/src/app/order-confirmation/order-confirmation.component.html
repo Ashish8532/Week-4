@@ -1,0 +1,58 @@
+<div class="container">
+<div class="card border-2 mt-4 p-4">
+  <ng-container *ngIf="order; else noOrder">
+    <div class="card-header bg-dark bg-gradient text-light ml-0">
+      <div class="row px-4 pt-2">
+        <div class="col-6">
+          <h4 class="text-white">
+            <b>Order Confirmation</b>
+          </h4>
+        </div>
+        <div class="col-6 text-end">
+          <a routerLink="/product" class="btn btn-light btn-sm">Home</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p>Your order with ID {{ order.id }} has been successfully placed on {{ order.orderDate | date:'medium' }}!</p>
+      <div>
+        <h3>Shipping Details:</h3>
+        <p>Name: {{ order.shippingDetails.name }}</p>
+        <p>Address: {{ order.shippingDetails.address }}</p>
+        <p>Phone: {{ order.shippingDetails.phone }}</p>
+        <p>City: {{ order.shippingDetails.city }}</p>
+        <p>State: {{ order.shippingDetails.state }}</p>
+        <p>Pin Code: {{ order.shippingDetails.pincode }}</p>
+      </div>
+    </div>
+    <br />
+    <div class="col-12">
+      <h3 class="text-dark"><b>Product Summary:</b></h3>
+    </div>
+    <table id="myTable" class="table table-bordered table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Quantity</th>
+          <th>Item Price</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of order.cartItem[0].products">
+          <td>{{ item.title }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.price * item.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+</ng-container>
+<ng-template #noOrder>
+  <div class="text-center">
+    <p>No order found.</p>
+  </div>
+</ng-template>
+</div>
+</div>
+

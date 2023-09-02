@@ -1,0 +1,43 @@
+  <div class="container">
+    <div class="card border-2 mt-4 p-4">
+      <ng-container *ngIf="orderHistory.length > 0; else noOrders">
+        <div class="card-header bg-dark bg-gradient text-light ml-0">
+            <div class="row px-4 pt-2">
+              <div class="col-6">
+                <h4 class="text-white">
+                  <b>Dashboard</b>
+                </h4>
+              </div>
+              <div class="col-6 text-end">
+                <a routerLink="" class="btn btn-light btn-sm">Home</a>
+              </div>
+            </div>
+          </div>
+        <br />
+        <div class="col-12">
+          <h3 class="text-dark"><b>Order History</b></h3>
+        </div>
+        <table id="myTable" class="table table-bordered table-striped" style="width:100%">
+          <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orderHistory">
+                <td>{{ order.id }}</td>
+                <td>{{ order.orderDate | date:'medium' }}</td>
+                <td>{{ order.totalPrice }}</td>
+              </tr>
+          </tbody>
+        </table>
+    </ng-container>
+    <ng-template #noOrders>
+      <div class="text-center">
+        <p>No order found.</p>
+      </div>
+    </ng-template>
+    </div>
+    </div>

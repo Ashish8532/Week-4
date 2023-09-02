@@ -1,0 +1,51 @@
+<div class="mb-5" >
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-2 rounded-3" style="width:80%; margin-top:40px; margin-left: 100px">
+                <div class="card-header bg-dark text-light ml-0">
+                    <div class="row col-12">
+                        <div class="col-6 h4 pt-1">
+                            <i class="fa fa-shopping-cart"></i> &nbsp;
+                            Product Details
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="p-4">
+                            <div class="text-center p-4"> 
+                                <img class="rounded-2" id="main-image" [src]="products.image" alt="image" width="250" /> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-4 rounded-3 bg-light h-100">
+                            <div class="d-flex justify-content-md-end">
+                                <a class="btn btn-secondary" routerLink=""><i class="bi bi-arrow-left-circle-fill"></i> Back
+                                    to Home</a>
+                            </div>
+                            <div class="mt-4 mb-3">
+                                <h5 class="text-uppercase text-dark fw-bold me-sm-2">{{ products.title }}</h5>
+                            <div class="d-flex flex-row align-items-center">
+                                <span class="text-success fw-bold me-lg-2"> {{ products.price | currency: 'INR'}}</span>
+                            </div>
+                            </div>
+                            <p class="text-dark">{{ products.description }}</p>
+                            <p class="text-dark"><span class="fw-bold">Category:</span> {{ products.category | titlecase }}</p>
+                            <div class="mt-2 text-dark fw-bold">
+                                <label class="me-lg-2" for="quantity">Quantity: </label>
+                                <input type="number" id="quantity"[(ngModel)]="selectedQuantity">
+                            </div>
+                            <p class="fw-bold mt-2">Rating: <span class="text-warning">{{ displayRating(products.rating.rate) }}</span> ({{products.rating.count}})</p>
+                            <div class="mt-2 d-grid">
+                                <button (click)="addToCart(products)" type="submit" class="btn btn-warning text-uppercase ">Buy Now <i
+                                    class="bi bi-cart-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="row pb-3" style="width:90%; margin: 20px 80px 20px 90px">
+    <div class="row col-12 px-4 pt-4 mb-4">
+        <div class="col-6">
+            <h4 class="text-dark">
+                <b>Product List</b>
+            </h4>
+        </div>
+        <div class="col-6 text-end">
+            <form [formGroup]="filterForm" class="d-flex">
+                <div class="form-group me-sm-2">
+                    <label class="me-sm-1" for="category">Category:</label>
+                <select formControlName="category" id="category">
+                    <option value="all">All Categories</option>
+                    <option *ngFor="let category of allCategories" [value]="category">{{ category }}</option>
+                </select>
+                </div>
+
+                <div class="form-group me-sm-2">
+                    <label class="me-sm-1" for="sort">Sort By:</label>
+                    <select formControlName="sort" id="sort">
+                        <option value="price-low-to-high">Price (Low to High)</option>
+                        <option value="price-high-to-low">Price (High to Low)</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <div class="col-lg-3 col-md-6 mt-4" *ngFor="let product of filteredProducts">
+        <app-product-item [product]="product" (productSelected)="onProductSelected($event)"></app-product-item>
+    </div>
+</div>

@@ -1,0 +1,197 @@
+<div class="container">
+  <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
+    <br />
+    <div style="width:100%; margin-top:20px">
+      <div class="card shadow border-0">
+
+        <div class="card-header bg-dark bg-gradient text-light ml-0">
+          <div class="row px-4 pt-2">
+            <div class="col-6">
+              <h4 class="text-white">
+                <b>Order Summary</b>
+              </h4>
+            </div>
+            <div class="col-6 text-end">
+              <a routerLink="/cart-list" class="btn btn-light btn-sm">Back to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body bg-light">
+          <div class="container rounded p-2">
+            <div class="row">
+              <div class="col-12 col-lg-6 pb-4">
+                <div class="row">
+                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-dark">Shipping Details:</span>
+                  </h4>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="name">Name:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="name" formControlName="name" class="form-control" />
+                  <div>
+                    <small *ngIf="checkoutForm.get('name')?.errors?.['required'] && checkoutForm.get('name')?.touched">
+                      Name is required.
+                    </small>
+                    <small
+                      *ngIf="checkoutForm.get('name')?.errors?.['noSpaceAllowed'] && checkoutForm.get('name')?.touched">
+                      Name cannot contain a space.
+                    </small>
+                  </div>
+                  </div>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="address">Address:</label>
+                  </div>
+                  <div class="col-9">
+                    <textarea id="address" formControlName="address" class="form-control" required></textarea>
+                  <div>
+                    <small
+                      *ngIf="checkoutForm.get('address')?.errors?.['required'] && checkoutForm.get('address')?.touched">
+                      Address is required.
+                    </small>
+                  </div>
+                  </div>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="phone">Phone:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="tel" id="phone" formControlName="phone" class="form-control" required />
+                  <div>
+                    <small *ngIf="checkoutForm.get('phone')?.errors?.['required'] && checkoutForm.get('phone')?.touched">
+                      Phone is required.</small>
+                      <small *ngIf="checkoutForm.get('phone')?.errors?.['pattern'] && checkoutForm.get('phone')?.touched" class="text-danger">Invalid PPhone Number.</small>
+                  </div>
+                  </div>
+                </div>
+                
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="city">City:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="city" formControlName="city" class="form-control" required />
+                  <div>
+                    <small *ngIf="checkoutForm.get('city')?.errors?.['required'] && checkoutForm.get('city')?.touched">
+                      Enter your city name.
+                    </small>
+                  </div>
+                  </div>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="state">State:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="state" formControlName="state" class="form-control" required />
+                  <div>
+                    <small
+                      *ngIf="checkoutForm.get('state')?.errors?.['required'] && checkoutForm.get('state')?.touched">
+                      Enter your state.
+                    </small>
+                  </div>
+                  </div>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="pincode">Pin Code:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="pincode" formControlName="pincode" class="form-control" required />
+                  <div>
+                    <small *ngIf="checkoutForm.get('pincode')?.errors?.['required'] && checkoutForm.get('pincode')?.touched">
+                      Pin Code is required. </small>
+                    <small *ngIf="checkoutForm.get('pincode')?.errors?.['pattern'] && checkoutForm.get('pincode')?.touched" class="text-danger">Invalid Pin Code.</small>
+                  </div>
+                  </div>
+                </div>
+                <br><br>
+
+                
+                <div class="row mb-2">
+                  <h4>
+                    <span class="text-dark">Payment Details:</span>
+                  </h4>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="cardNumber">Card Number:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="cardNumber" formControlName="cardNumber" class="form-control" />
+                  <div *ngIf="checkoutForm.get('cardNumber')?.errors?.['required'] && checkoutForm.get('cardNumber')?.touched" class="text-danger">Card Number is
+                    required.</div>
+                  <div *ngIf="checkoutForm.get('cardNumber')?.errors?.['pattern'] && checkoutForm.get('cardNumber')?.touched" class="text-danger">Invalid Card
+                    Number.</div>
+                  </div>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="expirationDate">Expiration Date:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="expirationDate" formControlName="expirationDate" placeholder="MM/YY" class="form-control" />
+                  <div *ngIf="checkoutForm.get('expirationDate')?.errors?.['required'] && checkoutForm.get('expirationDate')?.touched" class="text-danger">Expiration Date is required.</div>
+                  <div *ngIf="checkoutForm.get('expirationDate')?.errors?.['pattern'] && checkoutForm.get('expirationDate')?.touched" class="text-danger">Invalid Expiration Date (MM/YY).</div>
+                  </div>
+                </div>
+                <div class="row my-1">
+                  <div class="col-3">
+                    <label for="cvv">CVV:</label>
+                  </div>
+                  <div class="col-9">
+                    <input type="text" id="cvv" formControlName="cvv" class="form-control" />
+                  <div *ngIf="checkoutForm.get('cvv')?.errors?.['required'] && checkoutForm.get('cvv')?.touched" class="text-danger">CVV is required.</div>
+                  <div *ngIf="checkoutForm.get('cvv')?.errors?.['pattern'] && checkoutForm.get('cvv')?.touched" class="text-danger">Invalid CVV.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-5 offset-lg-1">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-dark">Order Items:</span>
+                </h4>
+                <ul class="list-group mb-3" *ngFor="let item of cartItems.products">
+                  <li class="list-group-item justify-content-between">
+                    <h6 class="my-0">{{ item.title }}</h6>
+                    <div class="d-flex mt-2">
+                      <div class="col-6">
+                        <small class="text-muted">Quantity: {{ item.quantity }}</small>
+                      </div>
+                      <div class="col-6 text-end">
+                        <small class="text-muted">Price: {{ item.price | currency:'INR':'symbol':'1.2-2' }}</small>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between bg-light">
+                    <strong class="text-info">Item Price: </strong>
+                    <strong class="text-info">{{ item.quantity * item.price | currency:'INR':'symbol':'1.2-2'
+                      }}</strong>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-light text-light ml-0 p-4">
+          <div class="col-12 row me-sm-5">
+            <div class="col-6">
+              <button type="submit" value="Place Order" class="btn btn-success form-control"
+                [disabled]="!checkoutForm.valid">Place Order</button>
+            </div>
+            <div class="col-6 text-end">
+              <div class="justify-content-between bg-light">
+                <strong class="text-dark">Total Price: </strong>
+                <strong class="text-success">{{ totalPrice | currency:'INR':'symbol':'1.2-2' }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

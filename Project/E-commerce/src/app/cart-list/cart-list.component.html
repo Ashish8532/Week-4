@@ -1,0 +1,65 @@
+<div style="width:80%; margin-left:150px; margin-top:50px">
+    <div class="card border-2">
+        <div class="card-header bg-dark text-light ml-0">
+            <div class="row col-12">
+                <div class="col-6 h4 pt-1">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    Shopping Cart
+                </div>
+                <div class="col-6 pt-1 text-end">
+                    <a routerLink="/product" class="fw-bold p-2 btn btn-light btn-sm">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-center mt-2" *ngIf="cartItems.length === 0">Your cart is empty.</h4>
+        <div class="card-body bg-white" *ngFor="let item of cartItems">
+            <div class="row col-12">
+                <div class="col-md-6">
+                    <div class="col-6 pt-md-3">
+                        <h5><strong>{{ item.title }}</strong></h5>
+                    </div>
+                    <div class="p-4">
+                        <div class="d-none d-lg-block col-lg-1 text-center py-2">
+                            <img [src]="item.image" alt="{{ item.title }}" class="rounded" width="100%" />
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded-3 bg-light h-100">
+                        <div class="mt-4 mb-3">
+                            <div class="d-flex flex-row align-items-center">
+                                <div>
+                                    <span class="text-success fw-bold me-lg-2"> {{ item.price | currency:'INR':'symbol':'1.2-2' }}</span>
+                                </div>
+                                &nbsp; &nbsp;
+                                <div>
+                                    <label class="me-lg-2" for="quantity"><strong>Quantity:</strong> </label>
+                                <input type="number" id="quantity" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item)">
+                                </div>
+                                &nbsp; &nbsp; &nbsp;
+                                <div>
+                                    <a (click)="removeFromCart(item)" class="btn btn-danger">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-light text-light ml-0 p-4">
+            <div class="col-12 row me-sm-5">
+                <div class="col-6">
+                    <a class="btn btn-success" routerLink="/checkout" *ngIf="cartItems.length > 0">Proceed to Checkout</a>
+                </div>
+                <div class="col-6 text-end text-dark">
+                    <div *ngIf="cartItems.length > 0" class="total-price">
+                        <strong>Total Price: {{ totalCartPrice | currency:'INR':'symbol':'1.2-2' }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

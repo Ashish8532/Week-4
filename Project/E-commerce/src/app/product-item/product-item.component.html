@@ -1,0 +1,20 @@
+<div class="row p-2">
+    <div class="col-12 p-1 border rounded-2">
+        <div>
+            <a [routerLink]="['/product-details', product.id]" (click)="onClick()" style="text-decoration:none">
+                <div class="text-center">
+                    <img style="height:340px; width:250px" [src]="product.image" alt="image" class="card-img-top rounded" />
+                </div>
+                <div class="mt-2 text-truncate text-dark h5 " style="max-width: 248px; margin-left: 10px;">
+                    {{ product.title | titlecase }}
+                    <div class="mt-2">
+                        <h5>Category: <small class="text-danger">{{ product.category }}</small></h5>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <span class="text-success fw-bold me-lg-2">{{product.price | currency: 'INR'}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
